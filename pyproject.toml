@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eigenloom"
+version = "1.0.0"
+description = "Self-adapting cybernetic engine manifold, fluid Matryoshka HyperGrid, and multi-layer weight-space compiler for Hermes Agent."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{name = "aidonerightcorp"}]
+dependencies = []
+
+[tool.setuptools]
+packages = ["eigenloom_core"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

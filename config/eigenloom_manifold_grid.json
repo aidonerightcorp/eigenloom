@@ -1,0 +1,3001 @@
+{
+  "schema_id": "eigenloom.cybernetic_manifold_hypergrid.v1",
+  "version": "1.0.0",
+  "palette": {
+    "paper_bg": "#f5f2ea",
+    "paper_card": "#faf8f3",
+    "paper_muted": "#ebe6da",
+    "ink_primary": "#141413",
+    "ink_secondary": "#4a4843",
+    "ink_border": "#cfc8b8",
+    "accent_sage": "#2f5d50",
+    "accent_ochre": "#8c5a2b",
+    "accent_slate": "#354f6b"
+  },
+  "numeric_constants": {
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "ten": 10,
+    "twelve": 12,
+    "sixteen": 16,
+    "twenty": 20,
+    "twenty_four": 24,
+    "thirty_two": 32,
+    "forty_eight": 48,
+    "sixty_four": 64,
+    "seventy_two": 72,
+    "one_hundred": 100,
+    "one_twenty_eight": 128,
+    "two_fifty_six": 256,
+    "five_twelve": 512,
+    "one_thousand": 1000,
+    "four_thousand": 4000,
+    "eight_thousand": 8000,
+    "default_context_length": 32768,
+    "half": 0.5,
+    "quarter": 0.25,
+    "tenth": 0.1,
+    "hundredth": 0.01,
+    "milli": 0.001,
+    "micro": 1e-06,
+    "nano": 1e-09,
+    "pico": 1e-12,
+    "gelu_c1": 0.7978845608,
+    "gelu_c2": 0.044715,
+    "default_threshold_percent": 0.78,
+    "busy_timeout_ms": 5000,
+    "hash_mod_prime": 2147483647,
+    "hash_mul_a": 1103515245,
+    "hash_add_b": 12345,
+    "hex_digest_prefix_chars": 16,
+    "uid_digest_chars": 12,
+    "safetensors_alignment_bytes": 8,
+    "float32_byte_width": 4,
+    "jacobi_max_sweeps": 48,
+    "boundary_saturation_margin": 0.06,
+    "boundary_expansion_factor": 1.35,
+    "anchor_drift_zero_tol": 1e-09,
+    "chars_per_token_estimate": 4
+  },
+  "wasm_binary_spec": {
+    "magic_bytes": [
+      0,
+      97,
+      115,
+      109
+    ],
+    "version_bytes": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "section_type": 1,
+    "section_function": 3,
+    "section_memory": 5,
+    "section_export": 7,
+    "section_code": 10,
+    "valtype_i32": 127,
+    "valtype_f32": 125,
+    "functype_tag": 96,
+    "export_func": 0,
+    "export_memory": 2,
+    "limits_min_only": 0,
+    "initial_pages": 1,
+    "op_local_get": 32,
+    "op_f32_const": 67,
+    "op_f32_add": 146,
+    "op_f32_mul": 148,
+    "op_i32_const": 65,
+    "op_end": 11,
+    "leb_mask_7bit": 127,
+    "leb_cont_bit": 128,
+    "leb_sign_bit": 64,
+    "byte_mask": 255,
+    "shift_seven": 7
+  },
+  "grid_ledger_lifecycle": [
+    "represented",
+    "applicable",
+    "proposed",
+    "dispatched",
+    "evaluated",
+    "verified",
+    "promoted"
+  ],
+  "matryoshka_manifold": {
+    "spaces": [
+      "task2vec",
+      "config2vec",
+      "weight2vec",
+      "trace2vec"
+    ],
+    "prefix_dims": [
+      16,
+      32,
+      64,
+      128
+    ],
+    "coarse_dim": 16,
+    "medium_dim": 32,
+    "fine_dim": 64,
+    "full_dim": 128,
+    "cascade_keep_multiplier": 2,
+    "band_ranges": {
+      "regime_band": [
+        0,
+        16
+      ],
+      "structural_band": [
+        16,
+        32
+      ],
+      "spectral_lexical_band": [
+        32,
+        64
+      ],
+      "high_res_band": [
+        64,
+        128
+      ]
+    }
+  },
+  "hypergrid_fluid_interpolation": {
+    "total_config_dimensions": 100,
+    "default_kernel_tau": 0.25,
+    "woodbury_prior_lambda": 0.2,
+    "bilinear_feature_dim": 48,
+    "bilinear_sub_dim": 16,
+    "ucb_beta": 0.55,
+    "opportunistic_exploration": {
+      "compute_headroom_floor": 0.15,
+      "default_compute_headroom": 0.6,
+      "min_candidates": 4,
+      "max_random_candidates": 36,
+      "halving_eta": 3,
+      "num_rungs": 3,
+      "rung_matryoshka_dims": [
+        16,
+        64,
+        128
+      ],
+      "covering_array_max_rows": 12,
+      "sobol_radical_bases": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29
+      ],
+      "uniform_mix_fraction": 0.35,
+      "promotion_margin_delta": 0.005
+    },
+    "operator_stack": {
+      "min_layers": 1,
+      "max_layers": 6,
+      "default_layers": 3,
+      "molora_experts": 4,
+      "molora_rank": 3,
+      "film_cond_dim": 16,
+      "default_early_exit_margin": 0.35,
+      "supported_targets": [
+        "safetensors",
+        "wasm_base64",
+        "wat",
+        "wgsl",
+        "c99",
+        "sql",
+        "python"
+      ]
+    }
+  },
+  "delegation_tiers": [
+    {
+      "tier_id": "reflex_tier",
+      "model": "hermes-reflex-fast",
+      "provider": "default",
+      "reasoning_effort": "low",
+      "service_tier": "standard",
+      "stratum_affinity": "reflex",
+      "relative_cost": 0.15
+    },
+    {
+      "tier_id": "compile_tier",
+      "model": "hermes-compile-balanced",
+      "provider": "default",
+      "reasoning_effort": "medium",
+      "service_tier": "standard",
+      "stratum_affinity": "compile",
+      "relative_cost": 0.4
+    },
+    {
+      "tier_id": "verify_tier",
+      "model": "hermes-verify-rigorous",
+      "provider": "default",
+      "reasoning_effort": "high",
+      "service_tier": "priority",
+      "stratum_affinity": "verify",
+      "relative_cost": 0.7
+    },
+    {
+      "tier_id": "architect_tier",
+      "model": "hermes-architect-deep",
+      "provider": "default",
+      "reasoning_effort": "high",
+      "service_tier": "priority",
+      "stratum_affinity": "architect",
+      "relative_cost": 0.9
+    }
+  ],
+  "feedback_timescales": [
+    {
+      "timescale_id": "tau_0_reflex",
+      "order": 0,
+      "gain": 0.35,
+      "horizon": "sub_turn_token_and_layer_cascade",
+      "description": "Per-call Matryoshka slicing, FiLM affine modulation, MoLoRA gating, and confidence-margin early exit."
+    },
+    {
+      "timescale_id": "tau_1_episode",
+      "order": 1,
+      "gain": 0.25,
+      "horizon": "per_verified_record",
+      "description": "Simultaneous Recursive Woodbury updates across LinUCB routing, Dawid-Skene quorum, EigenTrust, and Cost Ledger."
+    },
+    {
+      "timescale_id": "tau_2_consolidation",
+      "order": 2,
+      "gain": 0.18,
+      "horizon": "session_compaction_and_attractor_merge",
+      "description": "Hopfield continuous attractor consolidation and LoRA-XS / safetensors micro-cartridge compilation."
+    },
+    {
+      "timescale_id": "tau_3_morphism",
+      "order": 3,
+      "gain": 0.12,
+      "horizon": "cross_task_graph_transfer",
+      "description": "Laplacian spectral task-graph isomorphism detection and Orthogonal Procrustes cartridge transplant."
+    },
+    {
+      "timescale_id": "tau_4_meta_grid",
+      "order": 4,
+      "gain": 0.08,
+      "horizon": "hypergrid_generation_evolution",
+      "description": "HyperGrid Boundary Auto-Expansion on saturated axes and Jacobian spectral-radius Lyapunov stabilization."
+    }
+  ],
+  "strata": [
+    "ingestion_and_memory",
+    "compilation_and_lowering",
+    "routing_and_governance",
+    "adaptation_and_economics",
+    "meta_cybernetic_coupling"
+  ],
+  "engines": [
+    {
+      "index": 0,
+      "engine_id": "quotient_context_dag_engine",
+      "stratum": "ingestion_and_memory",
+      "primary_timescale": "tau_0_reflex",
+      "description": "Deduplicates context turns into a content-addressed quotient DAG while preserving prompt-cache prefix stability.",
+      "sub_engines": [
+        "uid_canonical_hasher",
+        "prefix_cache_guard",
+        "turn_equivalence_quotient",
+        "compaction_marker_weaver"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "compression_ratio_target",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.35,
+              "high": 0.88,
+              "default": 0.68
+            },
+            "expandable": true
+          },
+          {
+            "name": "protect_tail_turns",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 2,
+              "high": 16,
+              "default": 6
+            },
+            "expandable": true
+          },
+          {
+            "name": "dedup_policy",
+            "kind": "choice",
+            "choices": [
+              "exact_uid",
+              "matryoshka_cosine",
+              "hybrid_quotient"
+            ],
+            "default": "hybrid_quotient",
+            "expandable": false
+          },
+          {
+            "name": "preserve_prefix_identity",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 64,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "compression_ratio_target",
+            "min_allowed": 0.35,
+            "max_allowed": 0.88
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "quotient_context_dag_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "compression_ratio_target": 0.68,
+              "protect_tail_turns": 6,
+              "dedup_policy": "hybrid_quotient",
+              "preserve_prefix_identity": true,
+              "matryoshka_slice_dim": 64
+            }
+          },
+          {
+            "cell_id": "quotient_context_dag_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "compression_ratio_target": 0.515,
+              "protect_tail_turns": 4,
+              "dedup_policy": "exact_uid",
+              "preserve_prefix_identity": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "quotient_context_dag_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "compression_ratio_target": 0.79,
+              "protect_tail_turns": 12,
+              "dedup_policy": "hybrid_quotient",
+              "preserve_prefix_identity": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "engine_id": "wanda_saliency_pruning_engine",
+      "stratum": "ingestion_and_memory",
+      "primary_timescale": "tau_0_reflex",
+      "description": "Scores token, turn, and channel importance via activation-norm weighted magnitude saliency.",
+      "sub_engines": [
+        "activation_norm_tracker",
+        "channel_saliency_scorer",
+        "recency_decay_kernel",
+        "budget_knapsack_selector"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "saliency_quantile_floor",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.1,
+              "high": 0.75,
+              "default": 0.3
+            },
+            "expandable": true
+          },
+          {
+            "name": "window_horizon_turns",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 4,
+              "high": 64,
+              "default": 24
+            },
+            "expandable": true
+          },
+          {
+            "name": "norm_aggregation",
+            "kind": "choice",
+            "choices": [
+              "l2_wanda",
+              "rms_energy",
+              "spectral_entropy"
+            ],
+            "default": "l2_wanda",
+            "expandable": false
+          },
+          {
+            "name": "normalize_per_role",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 32,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "saliency_quantile_floor",
+            "min_allowed": 0.1,
+            "max_allowed": 0.75
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "wanda_saliency_pruning_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "saliency_quantile_floor": 0.3,
+              "window_horizon_turns": 24,
+              "norm_aggregation": "l2_wanda",
+              "normalize_per_role": true,
+              "matryoshka_slice_dim": 32
+            }
+          },
+          {
+            "cell_id": "wanda_saliency_pruning_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "saliency_quantile_floor": 0.2,
+              "window_horizon_turns": 14,
+              "norm_aggregation": "l2_wanda",
+              "normalize_per_role": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "wanda_saliency_pruning_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "saliency_quantile_floor": 0.5475,
+              "window_horizon_turns": 48,
+              "norm_aggregation": "spectral_entropy",
+              "normalize_per_role": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "engine_id": "hopfield_attractor_memory_engine",
+      "stratum": "ingestion_and_memory",
+      "primary_timescale": "tau_2_consolidation",
+      "description": "Stores and retrieves episodic traces in a modern continuous Hopfield energy landscape backed by SQLite WAL.",
+      "sub_engines": [
+        "inverse_temp_energy_well",
+        "episodic_pattern_separator",
+        "attractor_basin_merger",
+        "micro_cartridge_distiller"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "inverse_temperature_beta",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 2.0,
+              "high": 24.0,
+              "default": 8.0
+            },
+            "expandable": true
+          },
+          {
+            "name": "max_attractor_slots",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 16,
+              "high": 512,
+              "default": 128
+            },
+            "expandable": true
+          },
+          {
+            "name": "retrieval_kernel",
+            "kind": "choice",
+            "choices": [
+              "softmax_hopfield",
+              "sparsemax_basin",
+              "cascade_mrl"
+            ],
+            "default": "cascade_mrl",
+            "expandable": false
+          },
+          {
+            "name": "consolidate_on_pre_compress",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 128,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "inverse_temperature_beta",
+            "min_allowed": 2.0,
+            "max_allowed": 24.0
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "hopfield_attractor_memory_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "inverse_temperature_beta": 8.0,
+              "max_attractor_slots": 128,
+              "retrieval_kernel": "cascade_mrl",
+              "consolidate_on_pre_compress": true,
+              "matryoshka_slice_dim": 128
+            }
+          },
+          {
+            "cell_id": "hopfield_attractor_memory_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "inverse_temperature_beta": 5.0,
+              "max_attractor_slots": 72,
+              "retrieval_kernel": "softmax_hopfield",
+              "consolidate_on_pre_compress": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "hopfield_attractor_memory_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "inverse_temperature_beta": 16.8,
+              "max_attractor_slots": 352,
+              "retrieval_kernel": "cascade_mrl",
+              "consolidate_on_pre_compress": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "engine_id": "matryoshka_manifold_encoder_engine",
+      "stratum": "ingestion_and_memory",
+      "primary_timescale": "tau_0_reflex",
+      "description": "Projects tasks, configurations, weight stacks, and traces into one shared 16d/32d/64d/128d Matryoshka geometry.",
+      "sub_engines": [
+        "task2vec_structural_projector",
+        "config2vec_fourier_encoder",
+        "weight2vec_spectral_descriptor",
+        "trace2vec_shingle_encoder"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "cross_space_alignment_gain",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.15,
+              "high": 0.95,
+              "default": 0.55
+            },
+            "expandable": true
+          },
+          {
+            "name": "shingle_ngram_width",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 2,
+              "high": 6,
+              "default": 3
+            },
+            "expandable": true
+          },
+          {
+            "name": "band_weighting_mode",
+            "kind": "choice",
+            "choices": [
+              "uniform_prefix",
+              "harmonic_decay",
+              "variance_balanced"
+            ],
+            "default": "harmonic_decay",
+            "expandable": false
+          },
+          {
+            "name": "unit_normalize_all_prefixes",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 128,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "cross_space_alignment_gain",
+            "min_allowed": 0.15,
+            "max_allowed": 0.95
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "matryoshka_manifold_encoder_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "cross_space_alignment_gain": 0.55,
+              "shingle_ngram_width": 3,
+              "band_weighting_mode": "harmonic_decay",
+              "unit_normalize_all_prefixes": true,
+              "matryoshka_slice_dim": 128
+            }
+          },
+          {
+            "cell_id": "matryoshka_manifold_encoder_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "cross_space_alignment_gain": 0.35,
+              "shingle_ngram_width": 2,
+              "band_weighting_mode": "uniform_prefix",
+              "unit_normalize_all_prefixes": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "matryoshka_manifold_encoder_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "cross_space_alignment_gain": 0.77,
+              "shingle_ngram_width": 5,
+              "band_weighting_mode": "variance_balanced",
+              "unit_normalize_all_prefixes": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "engine_id": "ridge_polytope_compiler_engine",
+      "stratum": "compilation_and_lowering",
+      "primary_timescale": "tau_2_consolidation",
+      "description": "Compiles verified decision traces and symbolic rule tables into regularized linear polytopes and low-rank cores.",
+      "sub_engines": [
+        "tikhonov_ridge_solver",
+        "polytope_halfspace_fitter",
+        "rank_truncation_selector",
+        "residual_error_auditor"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "ridge_regularization_lambda",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.0001,
+              "high": 0.5,
+              "default": 0.01
+            },
+            "expandable": true
+          },
+          {
+            "name": "rank_cap",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 2,
+              "high": 16,
+              "default": 6
+            },
+            "expandable": true
+          },
+          {
+            "name": "solver_regime",
+            "kind": "choice",
+            "choices": [
+              "cholesky_ridge",
+              "svd_pseudoinverse",
+              "woodbury_incremental"
+            ],
+            "default": "svd_pseudoinverse",
+            "expandable": false
+          },
+          {
+            "name": "whiten_design_matrix",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 64,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "ridge_regularization_lambda",
+            "min_allowed": 0.0001,
+            "max_allowed": 0.5
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "ridge_polytope_compiler_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "ridge_regularization_lambda": 0.01,
+              "rank_cap": 6,
+              "solver_regime": "svd_pseudoinverse",
+              "whiten_design_matrix": true,
+              "matryoshka_slice_dim": 64
+            }
+          },
+          {
+            "cell_id": "ridge_polytope_compiler_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "ridge_regularization_lambda": 0.00505,
+              "rank_cap": 4,
+              "solver_regime": "cholesky_ridge",
+              "whiten_design_matrix": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "ridge_polytope_compiler_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "ridge_regularization_lambda": 0.2795,
+              "rank_cap": 12,
+              "solver_regime": "woodbury_incremental",
+              "whiten_design_matrix": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "engine_id": "multilayer_film_molora_stack_engine",
+      "stratum": "compilation_and_lowering",
+      "primary_timescale": "tau_1_episode",
+      "description": "Synthesizes variable-depth residual operator stacks with FiLM affine conditioning, MoLoRA routing, and early exit.",
+      "sub_engines": [
+        "film_gamma_beta_generator",
+        "molora_expert_gate_router",
+        "residual_activation_block",
+        "confidence_margin_halting_gate"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "early_exit_margin",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.1,
+              "high": 0.9,
+              "default": 0.35
+            },
+            "expandable": true
+          },
+          {
+            "name": "operator_stack_layers",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 1,
+              "high": 6,
+              "default": 3
+            },
+            "expandable": true
+          },
+          {
+            "name": "activation_family",
+            "kind": "choice",
+            "choices": [
+              "gelu",
+              "silu",
+              "relu",
+              "identity"
+            ],
+            "default": "gelu",
+            "expandable": false
+          },
+          {
+            "name": "enable_film_modulation",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 32,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "early_exit_margin",
+            "min_allowed": 0.1,
+            "max_allowed": 0.9
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "multilayer_film_molora_stack_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "early_exit_margin": 0.35,
+              "operator_stack_layers": 3,
+              "activation_family": "gelu",
+              "enable_film_modulation": true,
+              "matryoshka_slice_dim": 32
+            }
+          },
+          {
+            "cell_id": "multilayer_film_molora_stack_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "early_exit_margin": 0.225,
+              "operator_stack_layers": 2,
+              "activation_family": "gelu",
+              "enable_film_modulation": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "multilayer_film_molora_stack_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "early_exit_margin": 0.6525,
+              "operator_stack_layers": 5,
+              "activation_family": "identity",
+              "enable_film_modulation": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "engine_id": "svd_nullspace_surgical_editor_engine",
+      "stratum": "compilation_and_lowering",
+      "primary_timescale": "tau_1_episode",
+      "description": "Applies zero-anchor-drift nullspace updates, LoRA-XS cores, Woodbury writes, and CEGAR counterexample healing.",
+      "sub_engines": [
+        "anchor_subspace_orthogonalizer",
+        "lora_xs_core_adapter",
+        "cegar_counterexample_refiner",
+        "drift_norm_verifier"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "nullspace_energy_cutoff",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.0001,
+              "high": 0.05,
+              "default": 0.001
+            },
+            "expandable": true
+          },
+          {
+            "name": "anchor_basis_rank",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 1,
+              "high": 8,
+              "default": 3
+            },
+            "expandable": true
+          },
+          {
+            "name": "surgical_mode",
+            "kind": "choice",
+            "choices": [
+              "svd_nullspace",
+              "lora_xs",
+              "recursive_woodbury",
+              "procrustes_align"
+            ],
+            "default": "svd_nullspace",
+            "expandable": false
+          },
+          {
+            "name": "enforce_cegar_healing",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 64,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "nullspace_energy_cutoff",
+            "min_allowed": 0.0001,
+            "max_allowed": 0.05
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "svd_nullspace_surgical_editor_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "nullspace_energy_cutoff": 0.001,
+              "anchor_basis_rank": 3,
+              "surgical_mode": "svd_nullspace",
+              "enforce_cegar_healing": true,
+              "matryoshka_slice_dim": 64
+            }
+          },
+          {
+            "cell_id": "svd_nullspace_surgical_editor_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "nullspace_energy_cutoff": 0.00055,
+              "anchor_basis_rank": 2,
+              "surgical_mode": "svd_nullspace",
+              "enforce_cegar_healing": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "svd_nullspace_surgical_editor_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "nullspace_energy_cutoff": 0.02795,
+              "anchor_basis_rank": 6,
+              "surgical_mode": "procrustes_align",
+              "enforce_cegar_healing": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "engine_id": "portable_target_lowering_engine",
+      "stratum": "compilation_and_lowering",
+      "primary_timescale": "tau_2_consolidation",
+      "description": "Lowers compiled multi-layer cartridges into safetensors, in-memory WASM, WAT, WGSL, C99, SQL, and Python.",
+      "sub_engines": [
+        "safetensors_header_packer",
+        "wasm_ieee754_emitter",
+        "wgsl_compute_kernel_writer",
+        "c99_sql_python_codegen"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "quantization_clip_sigma",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 2.5,
+              "high": 8.0,
+              "default": 4.5
+            },
+            "expandable": true
+          },
+          {
+            "name": "wgsl_workgroup_width",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 8,
+              "high": 64,
+              "default": 16
+            },
+            "expandable": true
+          },
+          {
+            "name": "default_target_format",
+            "kind": "choice",
+            "choices": [
+              "safetensors",
+              "wasm_base64",
+              "wat",
+              "wgsl",
+              "c99",
+              "sql",
+              "python"
+            ],
+            "default": "safetensors",
+            "expandable": false
+          },
+          {
+            "name": "embed_weight2vec_manifest",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 128,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "quantization_clip_sigma",
+            "min_allowed": 2.5,
+            "max_allowed": 8.0
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "portable_target_lowering_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "quantization_clip_sigma": 4.5,
+              "wgsl_workgroup_width": 16,
+              "default_target_format": "safetensors",
+              "embed_weight2vec_manifest": true,
+              "matryoshka_slice_dim": 128
+            }
+          },
+          {
+            "cell_id": "portable_target_lowering_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "quantization_clip_sigma": 3.5,
+              "wgsl_workgroup_width": 12,
+              "default_target_format": "safetensors",
+              "embed_weight2vec_manifest": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "portable_target_lowering_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "quantization_clip_sigma": 6.425,
+              "wgsl_workgroup_width": 44,
+              "default_target_format": "python",
+              "embed_weight2vec_manifest": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "engine_id": "contextual_linucb_router_engine",
+      "stratum": "routing_and_governance",
+      "primary_timescale": "tau_1_episode",
+      "description": "Routes delegated subtasks across candidate model tiers via Task2Vec x Config2Vec bilinear LinUCB with Woodbury updates.",
+      "sub_engines": [
+        "bilinear_feature_sketcher",
+        "woodbury_covariance_updater",
+        "ucb_optimism_scorer",
+        "tier_latency_balancer"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "ucb_exploration_alpha",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.05,
+              "high": 2.5,
+              "default": 0.65
+            },
+            "expandable": true
+          },
+          {
+            "name": "woodbury_feature_dim",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 8,
+              "high": 48,
+              "default": 16
+            },
+            "expandable": true
+          },
+          {
+            "name": "routing_objective",
+            "kind": "choice",
+            "choices": [
+              "reward_per_cost",
+              "max_verified_accuracy",
+              "latency_pareto"
+            ],
+            "default": "reward_per_cost",
+            "expandable": false
+          },
+          {
+            "name": "enforce_maker_checker_separation",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 32,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "ucb_exploration_alpha",
+            "min_allowed": 0.05,
+            "max_allowed": 2.5
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "contextual_linucb_router_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "ucb_exploration_alpha": 0.65,
+              "woodbury_feature_dim": 16,
+              "routing_objective": "reward_per_cost",
+              "enforce_maker_checker_separation": true,
+              "matryoshka_slice_dim": 32
+            }
+          },
+          {
+            "cell_id": "contextual_linucb_router_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "ucb_exploration_alpha": 0.35,
+              "woodbury_feature_dim": 12,
+              "routing_objective": "reward_per_cost",
+              "enforce_maker_checker_separation": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "contextual_linucb_router_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "ucb_exploration_alpha": 1.6675,
+              "woodbury_feature_dim": 35,
+              "routing_objective": "latency_pareto",
+              "enforce_maker_checker_separation": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "engine_id": "cas_fission_lease_fencing_engine",
+      "stratum": "routing_and_governance",
+      "primary_timescale": "tau_0_reflex",
+      "description": "Decomposes composite goals into interface-contracted DAG nodes with atomic SQLite WAL compare-and-swap fencing stamps.",
+      "sub_engines": [
+        "dag_topological_fissioner",
+        "cas_fencing_stamp_arbiter",
+        "compaction_resume_packer"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "lease_ttl_seconds",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 30.0,
+              "high": 900.0,
+              "default": 180.0
+            },
+            "expandable": true
+          },
+          {
+            "name": "max_fission_fanout",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 2,
+              "high": 12,
+              "default": 5
+            },
+            "expandable": true
+          },
+          {
+            "name": "fission_granularity",
+            "kind": "choice",
+            "choices": [
+              "coarse_module",
+              "interface_contract",
+              "atomic_step"
+            ],
+            "default": "interface_contract",
+            "expandable": false
+          },
+          {
+            "name": "reuse_verified_cache",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 32,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "lease_ttl_seconds",
+            "min_allowed": 30.0,
+            "max_allowed": 900.0
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "cas_fission_lease_fencing_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "lease_ttl_seconds": 180.0,
+              "max_fission_fanout": 5,
+              "fission_granularity": "interface_contract",
+              "reuse_verified_cache": true,
+              "matryoshka_slice_dim": 32
+            }
+          },
+          {
+            "cell_id": "cas_fission_lease_fencing_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "lease_ttl_seconds": 105.0,
+              "max_fission_fanout": 4,
+              "fission_granularity": "coarse_module",
+              "reuse_verified_cache": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "cas_fission_lease_fencing_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "lease_ttl_seconds": 576.0,
+              "max_fission_fanout": 9,
+              "fission_granularity": "atomic_step",
+              "reuse_verified_cache": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "engine_id": "dawid_skene_quorum_adjudicator_engine",
+      "stratum": "routing_and_governance",
+      "primary_timescale": "tau_1_episode",
+      "description": "Estimates posterior truth and per-actor confusion matrices across independent maker-checker verification records.",
+      "sub_engines": [
+        "confusion_dirichlet_updater",
+        "posterior_consensus_solver",
+        "disagreement_entropy_detector"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "quorum_posterior_threshold",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.6,
+              "high": 0.99,
+              "default": 0.85
+            },
+            "expandable": true
+          },
+          {
+            "name": "dirichlet_prior_strength",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 1,
+              "high": 10,
+              "default": 2
+            },
+            "expandable": true
+          },
+          {
+            "name": "adjudication_rule",
+            "kind": "choice",
+            "choices": [
+              "dawid_skene_em",
+              "log_odds_weighted",
+              "strict_unanimity"
+            ],
+            "default": "dawid_skene_em",
+            "expandable": false
+          },
+          {
+            "name": "penalize_correlated_checkers",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 16,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "quorum_posterior_threshold",
+            "min_allowed": 0.6,
+            "max_allowed": 0.99
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "dawid_skene_quorum_adjudicator_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "quorum_posterior_threshold": 0.85,
+              "dirichlet_prior_strength": 2,
+              "adjudication_rule": "dawid_skene_em",
+              "penalize_correlated_checkers": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "dawid_skene_quorum_adjudicator_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "quorum_posterior_threshold": 0.725,
+              "dirichlet_prior_strength": 2,
+              "adjudication_rule": "dawid_skene_em",
+              "penalize_correlated_checkers": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "dawid_skene_quorum_adjudicator_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "quorum_posterior_threshold": 0.927,
+              "dirichlet_prior_strength": 7,
+              "adjudication_rule": "strict_unanimity",
+              "penalize_correlated_checkers": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "engine_id": "eigentrust_reputation_flow_engine",
+      "stratum": "routing_and_governance",
+      "primary_timescale": "tau_2_consolidation",
+      "description": "Computes stationary left-principal eigenvector reputation over the actor verification graph with pre-trusted anchors.",
+      "sub_engines": [
+        "trust_transition_normalizer",
+        "power_iteration_stationary_solver",
+        "sybil_damping_guard"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "pretrusted_damping_alpha",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.05,
+              "high": 0.45,
+              "default": 0.15
+            },
+            "expandable": true
+          },
+          {
+            "name": "power_iteration_steps",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 4,
+              "high": 32,
+              "default": 12
+            },
+            "expandable": true
+          },
+          {
+            "name": "trust_aggregation",
+            "kind": "choice",
+            "choices": [
+              "stationary_eigenvector",
+              "damped_katz",
+              "beta_reputation"
+            ],
+            "default": "stationary_eigenvector",
+            "expandable": false
+          },
+          {
+            "name": "clamp_negative_endorsements",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 16,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "pretrusted_damping_alpha",
+            "min_allowed": 0.05,
+            "max_allowed": 0.45
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "eigentrust_reputation_flow_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "pretrusted_damping_alpha": 0.15,
+              "power_iteration_steps": 12,
+              "trust_aggregation": "stationary_eigenvector",
+              "clamp_negative_endorsements": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "eigentrust_reputation_flow_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "pretrusted_damping_alpha": 0.1,
+              "power_iteration_steps": 8,
+              "trust_aggregation": "stationary_eigenvector",
+              "clamp_negative_endorsements": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "eigentrust_reputation_flow_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "pretrusted_damping_alpha": 0.315,
+              "power_iteration_steps": 24,
+              "trust_aggregation": "beta_reputation",
+              "clamp_negative_endorsements": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 12,
+      "engine_id": "rmt_marchenko_pastur_spectral_engine",
+      "stratum": "adaptation_and_economics",
+      "primary_timescale": "tau_2_consolidation",
+      "description": "Diagnoses random-matrix noise floors, Roy-Vetterli effective rank, and heavy-tail spectral power-law exponents.",
+      "sub_engines": [
+        "marchenko_pastur_bulk_estimator",
+        "effective_shannon_rank_meter",
+        "powerlaw_tail_exponent_fitter",
+        "rank_collapse_alarm"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "mp_spike_margin_ratio",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 1.02,
+              "high": 2.0,
+              "default": 1.15
+            },
+            "expandable": true
+          },
+          {
+            "name": "tail_min_singular_count",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 3,
+              "high": 16,
+              "default": 4
+            },
+            "expandable": true
+          },
+          {
+            "name": "variance_estimator",
+            "kind": "choice",
+            "choices": [
+              "median_marcinkiewicz",
+              "trimmed_bulk",
+              "frobenius_unbiased"
+            ],
+            "default": "median_marcinkiewicz",
+            "expandable": false
+          },
+          {
+            "name": "flag_over_regularized_tails",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 64,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "mp_spike_margin_ratio",
+            "min_allowed": 1.02,
+            "max_allowed": 2.0
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "rmt_marchenko_pastur_spectral_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "mp_spike_margin_ratio": 1.15,
+              "tail_min_singular_count": 4,
+              "variance_estimator": "median_marcinkiewicz",
+              "flag_over_regularized_tails": true,
+              "matryoshka_slice_dim": 64
+            }
+          },
+          {
+            "cell_id": "rmt_marchenko_pastur_spectral_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "mp_spike_margin_ratio": 1.085,
+              "tail_min_singular_count": 4,
+              "variance_estimator": "median_marcinkiewicz",
+              "flag_over_regularized_tails": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "rmt_marchenko_pastur_spectral_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "mp_spike_margin_ratio": 1.6175,
+              "tail_min_singular_count": 11,
+              "variance_estimator": "frobenius_unbiased",
+              "flag_over_regularized_tails": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 13,
+      "engine_id": "fluid_hypergrid_interpolator_engine",
+      "stratum": "adaptation_and_economics",
+      "primary_timescale": "tau_0_reflex",
+      "description": "Synthesizes continuous embedding-conditioned configurations over verified GridLedger cells and expands saturated bounds.",
+      "sub_engines": [
+        "verified_cell_kernel_smoother",
+        "parameter_bounds_clamper",
+        "bilinear_surrogate_ranker",
+        "boundary_auto_expander"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "kernel_temperature_tau",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.05,
+              "high": 1.5,
+              "default": 0.25
+            },
+            "expandable": true
+          },
+          {
+            "name": "interpolation_top_k_cells",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 2,
+              "high": 12,
+              "default": 4
+            },
+            "expandable": true
+          },
+          {
+            "name": "kernel_family",
+            "kind": "choice",
+            "choices": [
+              "matryoshka_rbf",
+              "cosine_softmax",
+              "laplacian_kernel"
+            ],
+            "default": "cosine_softmax",
+            "expandable": false
+          },
+          {
+            "name": "auto_expand_saturated_axes",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 64,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "kernel_temperature_tau",
+            "min_allowed": 0.05,
+            "max_allowed": 1.5
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "fluid_hypergrid_interpolator_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "kernel_temperature_tau": 0.25,
+              "interpolation_top_k_cells": 4,
+              "kernel_family": "cosine_softmax",
+              "auto_expand_saturated_axes": true,
+              "matryoshka_slice_dim": 64
+            }
+          },
+          {
+            "cell_id": "fluid_hypergrid_interpolator_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "kernel_temperature_tau": 0.15,
+              "interpolation_top_k_cells": 3,
+              "kernel_family": "matryoshka_rbf",
+              "auto_expand_saturated_axes": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "fluid_hypergrid_interpolator_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "kernel_temperature_tau": 0.9375,
+              "interpolation_top_k_cells": 9,
+              "kernel_family": "laplacian_kernel",
+              "auto_expand_saturated_axes": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "engine_id": "evsi_effort_cascade_calibrator_engine",
+      "stratum": "adaptation_and_economics",
+      "primary_timescale": "tau_0_reflex",
+      "description": "Computes Expected Value of Sample Information to select reasoning effort, Matryoshka depth, and early-exit cascades.",
+      "sub_engines": [
+        "epistemic_variance_estimator",
+        "evsi_net_gain_integrator",
+        "short_circuit_tier_selector"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "information_cost_weight",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.02,
+              "high": 0.6,
+              "default": 0.14
+            },
+            "expandable": true
+          },
+          {
+            "name": "cascade_depth_budget",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 1,
+              "high": 6,
+              "default": 3
+            },
+            "expandable": true
+          },
+          {
+            "name": "effort_policy",
+            "kind": "choice",
+            "choices": [
+              "evsi_bayes_optimal",
+              "risk_averse_cvar",
+              "latency_first"
+            ],
+            "default": "evsi_bayes_optimal",
+            "expandable": false
+          },
+          {
+            "name": "enable_reflex_short_circuit",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 32,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "information_cost_weight",
+            "min_allowed": 0.02,
+            "max_allowed": 0.6
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "evsi_effort_cascade_calibrator_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "information_cost_weight": 0.14,
+              "cascade_depth_budget": 3,
+              "effort_policy": "evsi_bayes_optimal",
+              "enable_reflex_short_circuit": true,
+              "matryoshka_slice_dim": 32
+            }
+          },
+          {
+            "cell_id": "evsi_effort_cascade_calibrator_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "information_cost_weight": 0.08,
+              "cascade_depth_budget": 2,
+              "effort_policy": "evsi_bayes_optimal",
+              "enable_reflex_short_circuit": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "evsi_effort_cascade_calibrator_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "information_cost_weight": 0.393,
+              "cascade_depth_budget": 5,
+              "effort_policy": "latency_first",
+              "enable_reflex_short_circuit": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "engine_id": "operation_cost_thermodynamic_engine",
+      "stratum": "adaptation_and_economics",
+      "primary_timescale": "tau_1_episode",
+      "description": "Tracks prompt tokens, Cartridge FLOPs, cache preservation rate, and Landauer-inspired compute efficiency per regime.",
+      "sub_engines": [
+        "token_flop_meter",
+        "prompt_cache_hit_accountant",
+        "regime_pareto_frontier_ledger"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "cost_ema_smoothing",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.05,
+              "high": 0.5,
+              "default": 0.2
+            },
+            "expandable": true
+          },
+          {
+            "name": "ledger_window_episodes",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 8,
+              "high": 256,
+              "default": 64
+            },
+            "expandable": true
+          },
+          {
+            "name": "efficiency_metric",
+            "kind": "choice",
+            "choices": [
+              "verified_gain_per_kilotoken",
+              "pareto_hypervolume",
+              "net_surplus"
+            ],
+            "default": "verified_gain_per_kilotoken",
+            "expandable": false
+          },
+          {
+            "name": "reward_cache_hit_identity",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 16,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "cost_ema_smoothing",
+            "min_allowed": 0.05,
+            "max_allowed": 0.5
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "operation_cost_thermodynamic_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "cost_ema_smoothing": 0.2,
+              "ledger_window_episodes": 64,
+              "efficiency_metric": "verified_gain_per_kilotoken",
+              "reward_cache_hit_identity": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "operation_cost_thermodynamic_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "cost_ema_smoothing": 0.125,
+              "ledger_window_episodes": 36,
+              "efficiency_metric": "verified_gain_per_kilotoken",
+              "reward_cache_hit_identity": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "operation_cost_thermodynamic_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "cost_ema_smoothing": 0.365,
+              "ledger_window_episodes": 176,
+              "efficiency_metric": "net_surplus",
+              "reward_cache_hit_identity": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "engine_id": "inter_engine_coupling_and_jacobian_bus",
+      "stratum": "meta_cybernetic_coupling",
+      "primary_timescale": "tau_3_morphism",
+      "description": "Propagates cross-engine sensitivities over the sparse 20x20 Jacobian bus under spectral-radius contraction bounds.",
+      "sub_engines": [
+        "sparse_jacobian_assembler",
+        "spectral_radius_governor",
+        "timescale_gain_multiplexer",
+        "cross_stratum_impulse_router"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "jacobian_step_size",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.02,
+              "high": 0.45,
+              "default": 0.12
+            },
+            "expandable": true
+          },
+          {
+            "name": "max_coupling_hops",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 1,
+              "high": 5,
+              "default": 2
+            },
+            "expandable": true
+          },
+          {
+            "name": "damping_norm",
+            "kind": "choice",
+            "choices": [
+              "spectral_svd",
+              "gershgorin_disc",
+              "frobenius_cap"
+            ],
+            "default": "spectral_svd",
+            "expandable": false
+          },
+          {
+            "name": "zero_diagonal_self_loop",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 64,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "jacobian_step_size",
+            "min_allowed": 0.02,
+            "max_allowed": 0.45
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "inter_engine_coupling_and_jacobian_bus::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "jacobian_step_size": 0.12,
+              "max_coupling_hops": 2,
+              "damping_norm": "spectral_svd",
+              "zero_diagonal_self_loop": true,
+              "matryoshka_slice_dim": 64
+            }
+          },
+          {
+            "cell_id": "inter_engine_coupling_and_jacobian_bus::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "jacobian_step_size": 0.07,
+              "max_coupling_hops": 2,
+              "damping_norm": "spectral_svd",
+              "zero_diagonal_self_loop": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "inter_engine_coupling_and_jacobian_bus::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "jacobian_step_size": 0.3015,
+              "max_coupling_hops": 4,
+              "damping_norm": "frobenius_cap",
+              "zero_diagonal_self_loop": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 17,
+      "engine_id": "homeostatic_meta_controller_engine",
+      "stratum": "meta_cybernetic_coupling",
+      "primary_timescale": "tau_4_meta_grid",
+      "description": "Enforces discrete Lyapunov energy decay and homeostatic setpoint regulation across all 5 feedback timescales.",
+      "sub_engines": [
+        "lyapunov_energy_monitor",
+        "pid_timescale_gain_tuner",
+        "runaway_oscillation_breaker"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "lyapunov_contraction_rho",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.55,
+              "high": 0.98,
+              "default": 0.88
+            },
+            "expandable": true
+          },
+          {
+            "name": "homeostasis_patience_steps",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 2,
+              "high": 16,
+              "default": 4
+            },
+            "expandable": true
+          },
+          {
+            "name": "control_law",
+            "kind": "choice",
+            "choices": [
+              "lyapunov_damped",
+              "integral_setpoint",
+              "conservative_clamp"
+            ],
+            "default": "lyapunov_damped",
+            "expandable": false
+          },
+          {
+            "name": "rollback_divergent_cells",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 32,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "lyapunov_contraction_rho",
+            "min_allowed": 0.55,
+            "max_allowed": 0.98
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "homeostatic_meta_controller_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "lyapunov_contraction_rho": 0.88,
+              "homeostasis_patience_steps": 4,
+              "control_law": "lyapunov_damped",
+              "rollback_divergent_cells": true,
+              "matryoshka_slice_dim": 32
+            }
+          },
+          {
+            "cell_id": "homeostatic_meta_controller_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "lyapunov_contraction_rho": 0.715,
+              "homeostasis_patience_steps": 3,
+              "control_law": "lyapunov_damped",
+              "rollback_divergent_cells": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "homeostatic_meta_controller_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "lyapunov_contraction_rho": 0.935,
+              "homeostasis_patience_steps": 11,
+              "control_law": "conservative_clamp",
+              "rollback_divergent_cells": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "engine_id": "structural_morphism_and_transfer_engine",
+      "stratum": "meta_cybernetic_coupling",
+      "primary_timescale": "tau_3_morphism",
+      "description": "Discovers task-DAG spectral isomorphisms and transplants verified cartridges across domains via Orthogonal Procrustes.",
+      "sub_engines": [
+        "laplacian_spectrum_matcher",
+        "orthogonal_procrustes_transplanter",
+        "transfer_fidelity_gate"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "morphism_similarity_floor",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.4,
+              "high": 0.95,
+              "default": 0.68
+            },
+            "expandable": true
+          },
+          {
+            "name": "laplacian_eigen_k",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 2,
+              "high": 12,
+              "default": 6
+            },
+            "expandable": true
+          },
+          {
+            "name": "alignment_solver",
+            "kind": "choice",
+            "choices": [
+              "svd_orthogonal_procrustes",
+              "ridge_affine_map",
+              "rank_constrained_procrustes"
+            ],
+            "default": "svd_orthogonal_procrustes",
+            "expandable": false
+          },
+          {
+            "name": "preserve_singular_spectrum",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 128,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "morphism_similarity_floor",
+            "min_allowed": 0.4,
+            "max_allowed": 0.95
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "structural_morphism_and_transfer_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "morphism_similarity_floor": 0.68,
+              "laplacian_eigen_k": 6,
+              "alignment_solver": "svd_orthogonal_procrustes",
+              "preserve_singular_spectrum": true,
+              "matryoshka_slice_dim": 128
+            }
+          },
+          {
+            "cell_id": "structural_morphism_and_transfer_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "morphism_similarity_floor": 0.54,
+              "laplacian_eigen_k": 4,
+              "alignment_solver": "svd_orthogonal_procrustes",
+              "preserve_singular_spectrum": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "structural_morphism_and_transfer_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "morphism_similarity_floor": 0.8285,
+              "laplacian_eigen_k": 10,
+              "alignment_solver": "rank_constrained_procrustes",
+              "preserve_singular_spectrum": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 19,
+      "engine_id": "human_attention_and_escalation_engine",
+      "stratum": "meta_cybernetic_coupling",
+      "primary_timescale": "tau_1_episode",
+      "description": "Synthesizes minimum-entropy disambiguation questions and escalates only when EVSI exceeds human interruption cost.",
+      "sub_engines": [
+        "minimum_entropy_question_ranker",
+        "interruption_budget_guard",
+        "escalation_threshold_gate"
+      ],
+      "matrix_shape": [
+        8,
+        8
+      ],
+      "anchor_subspace_rank": 2,
+      "node_grid": {
+        "generation": 1,
+        "parameters": [
+          {
+            "name": "escalation_evsi_threshold",
+            "kind": "continuous_range",
+            "bounds": {
+              "low": 0.25,
+              "high": 0.95,
+              "default": 0.62
+            },
+            "expandable": true
+          },
+          {
+            "name": "max_disambiguation_options",
+            "kind": "integer_range",
+            "bounds": {
+              "low": 2,
+              "high": 5,
+              "default": 3
+            },
+            "expandable": true
+          },
+          {
+            "name": "question_selection_criterion",
+            "kind": "choice",
+            "choices": [
+              "shannon_ig_max",
+              "minimax_regret",
+              "voi_per_word"
+            ],
+            "default": "shannon_ig_max",
+            "expandable": false
+          },
+          {
+            "name": "batch_clarifications",
+            "kind": "boolean",
+            "default": true,
+            "expandable": false
+          },
+          {
+            "name": "matryoshka_slice_dim",
+            "kind": "choice",
+            "choices": [
+              16,
+              32,
+              64,
+              128
+            ],
+            "default": 32,
+            "expandable": false
+          }
+        ],
+        "constraints": [
+          {
+            "kind": "range_order",
+            "parameter": "escalation_evsi_threshold",
+            "min_allowed": 0.25,
+            "max_allowed": 0.95
+          }
+        ],
+        "seed_cells": [
+          {
+            "cell_id": "human_attention_and_escalation_engine::seed_balanced",
+            "regime": "balanced_default",
+            "state": "promoted",
+            "maker_id": "bootstrap_architect",
+            "checker_id": "bootstrap_auditor",
+            "observed_reward": 0.86,
+            "values": {
+              "escalation_evsi_threshold": 0.62,
+              "max_disambiguation_options": 3,
+              "question_selection_criterion": "shannon_ig_max",
+              "batch_clarifications": true,
+              "matryoshka_slice_dim": 32
+            }
+          },
+          {
+            "cell_id": "human_attention_and_escalation_engine::seed_reflex",
+            "regime": "low_latency_reflex",
+            "state": "verified",
+            "maker_id": "bootstrap_compiler",
+            "checker_id": "bootstrap_verifier",
+            "observed_reward": 0.82,
+            "values": {
+              "escalation_evsi_threshold": 0.435,
+              "max_disambiguation_options": 2,
+              "question_selection_criterion": "shannon_ig_max",
+              "batch_clarifications": true,
+              "matryoshka_slice_dim": 16
+            }
+          },
+          {
+            "cell_id": "human_attention_and_escalation_engine::seed_deep",
+            "regime": "high_precision_verify",
+            "state": "verified",
+            "maker_id": "bootstrap_synthesizer",
+            "checker_id": "bootstrap_inspector",
+            "observed_reward": 0.89,
+            "values": {
+              "escalation_evsi_threshold": 0.8015,
+              "max_disambiguation_options": 4,
+              "question_selection_criterion": "voi_per_word",
+              "batch_clarifications": true,
+              "matryoshka_slice_dim": 128
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "sparse_coupling_edges": [
+    {
+      "source": "wanda_saliency_pruning_engine",
+      "target": "quotient_context_dag_engine",
+      "weight": 0.24,
+      "timescale": "tau_0_reflex",
+      "signal": "saliency_retention_mask"
+    },
+    {
+      "source": "quotient_context_dag_engine",
+      "target": "hopfield_attractor_memory_engine",
+      "weight": 0.22,
+      "timescale": "tau_2_consolidation",
+      "signal": "evicted_turn_bundle"
+    },
+    {
+      "source": "matryoshka_manifold_encoder_engine",
+      "target": "fluid_hypergrid_interpolator_engine",
+      "weight": 0.28,
+      "timescale": "tau_0_reflex",
+      "signal": "nested_mrl_coordinates"
+    },
+    {
+      "source": "matryoshka_manifold_encoder_engine",
+      "target": "contextual_linucb_router_engine",
+      "weight": 0.25,
+      "timescale": "tau_1_episode",
+      "signal": "task2vec_bilinear_context"
+    },
+    {
+      "source": "matryoshka_manifold_encoder_engine",
+      "target": "hopfield_attractor_memory_engine",
+      "weight": 0.21,
+      "timescale": "tau_0_reflex",
+      "signal": "trace2vec_query_key"
+    },
+    {
+      "source": "hopfield_attractor_memory_engine",
+      "target": "ridge_polytope_compiler_engine",
+      "weight": 0.2,
+      "timescale": "tau_2_consolidation",
+      "signal": "consolidated_attractor_pairs"
+    },
+    {
+      "source": "ridge_polytope_compiler_engine",
+      "target": "multilayer_film_molora_stack_engine",
+      "weight": 0.26,
+      "timescale": "tau_2_consolidation",
+      "signal": "base_polytope_cores"
+    },
+    {
+      "source": "fluid_hypergrid_interpolator_engine",
+      "target": "multilayer_film_molora_stack_engine",
+      "weight": 0.24,
+      "timescale": "tau_0_reflex",
+      "signal": "interpolated_film_hyperparams"
+    },
+    {
+      "source": "rmt_marchenko_pastur_spectral_engine",
+      "target": "svd_nullspace_surgical_editor_engine",
+      "weight": 0.27,
+      "timescale": "tau_1_episode",
+      "signal": "mp_noise_edge_rank_floor"
+    },
+    {
+      "source": "rmt_marchenko_pastur_spectral_engine",
+      "target": "ridge_polytope_compiler_engine",
+      "weight": 0.19,
+      "timescale": "tau_2_consolidation",
+      "signal": "tail_regularization_pressure"
+    },
+    {
+      "source": "svd_nullspace_surgical_editor_engine",
+      "target": "portable_target_lowering_engine",
+      "weight": 0.23,
+      "timescale": "tau_2_consolidation",
+      "signal": "verified_zero_drift_weights"
+    },
+    {
+      "source": "multilayer_film_molora_stack_engine",
+      "target": "portable_target_lowering_engine",
+      "weight": 0.25,
+      "timescale": "tau_2_consolidation",
+      "signal": "multilayer_operator_graph"
+    },
+    {
+      "source": "cas_fission_lease_fencing_engine",
+      "target": "contextual_linucb_router_engine",
+      "weight": 0.21,
+      "timescale": "tau_0_reflex",
+      "signal": "fenced_subtask_contracts"
+    },
+    {
+      "source": "dawid_skene_quorum_adjudicator_engine",
+      "target": "contextual_linucb_router_engine",
+      "weight": 0.26,
+      "timescale": "tau_1_episode",
+      "signal": "verified_posterior_reward"
+    },
+    {
+      "source": "dawid_skene_quorum_adjudicator_engine",
+      "target": "eigentrust_reputation_flow_engine",
+      "weight": 0.29,
+      "timescale": "tau_1_episode",
+      "signal": "confusion_trust_deltas"
+    },
+    {
+      "source": "eigentrust_reputation_flow_engine",
+      "target": "contextual_linucb_router_engine",
+      "weight": 0.2,
+      "timescale": "tau_2_consolidation",
+      "signal": "stationary_actor_priors"
+    },
+    {
+      "source": "evsi_effort_cascade_calibrator_engine",
+      "target": "multilayer_film_molora_stack_engine",
+      "weight": 0.22,
+      "timescale": "tau_0_reflex",
+      "signal": "early_exit_margin_setpoint"
+    },
+    {
+      "source": "evsi_effort_cascade_calibrator_engine",
+      "target": "human_attention_and_escalation_engine",
+      "weight": 0.27,
+      "timescale": "tau_1_episode",
+      "signal": "net_evsi_surplus"
+    },
+    {
+      "source": "operation_cost_thermodynamic_engine",
+      "target": "evsi_effort_cascade_calibrator_engine",
+      "weight": -0.18,
+      "timescale": "tau_1_episode",
+      "signal": "marginal_compute_price"
+    },
+    {
+      "source": "operation_cost_thermodynamic_engine",
+      "target": "fluid_hypergrid_interpolator_engine",
+      "weight": 0.19,
+      "timescale": "tau_1_episode",
+      "signal": "pareto_efficiency_weights"
+    },
+    {
+      "source": "structural_morphism_and_transfer_engine",
+      "target": "svd_nullspace_surgical_editor_engine",
+      "weight": 0.22,
+      "timescale": "tau_3_morphism",
+      "signal": "procrustes_transplanted_basis"
+    },
+    {
+      "source": "inter_engine_coupling_and_jacobian_bus",
+      "target": "homeostatic_meta_controller_engine",
+      "weight": 0.3,
+      "timescale": "tau_4_meta_grid",
+      "signal": "jacobian_spectral_norm"
+    },
+    {
+      "source": "homeostatic_meta_controller_engine",
+      "target": "inter_engine_coupling_and_jacobian_bus",
+      "weight": -0.25,
+      "timescale": "tau_4_meta_grid",
+      "signal": "lyapunov_damping_clamp"
+    },
+    {
+      "source": "homeostatic_meta_controller_engine",
+      "target": "fluid_hypergrid_interpolator_engine",
+      "weight": 0.21,
+      "timescale": "tau_4_meta_grid",
+      "signal": "boundary_expansion_authorization"
+    },
+    {
+      "source": "human_attention_and_escalation_engine",
+      "target": "cas_fission_lease_fencing_engine",
+      "weight": 0.18,
+      "timescale": "tau_1_episode",
+      "signal": "resolved_interface_constraints"
+    }
+  ]
+}

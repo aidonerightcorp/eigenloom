@@ -1,0 +1,50 @@
+name: eigenloom
+version: "1.0.0"
+description: "Cybernetic 20-engine weight-space manifold, fluid 4-space Matryoshka HyperGrid, fenced task-DAG verification, and 7-target operator stack compiler."
+author: aidonerightcorp
+license: MIT
+homepage: https://github.com/aidonerightcorp/eigenloom
+kind: standalone
+manifest_version: 2
+requires_hermes: ">=0.23.0"
+tags:
+  - cybernetics
+  - context-engine
+  - memory
+  - delegation
+  - weight-space
+  - matryoshka
+  - compiler
+python_dependencies: []
+requires_env: []
+provides_tools:
+  - eigenloom_fission_dag
+  - eigenloom_claim_and_fence
+  - eigenloom_verify_record
+  - eigenloom_compile_cartridge
+  - eigenloom_analyze_spectrum
+  - eigenloom_surgical_edit
+  - eigenloom_coupling_step
+  - eigenloom_morphism_transfer
+  - eigenloom_calibrate_effort
+  - eigenloom_manifold_status
+  - eigenloom_context_grep
+  - eigenloom_attractor_recall
+provides_hooks:
+  - on_session_start
+  - pre_tool_call
+  - post_tool_call
+  - on_session_end
+config_schema:
+  compute_headroom_ratio:
+    type: float
+    default: 0.6
+    description: "Fraction of spare local CPU budget allocated to zero-token Successive Halving HyperGrid exploration."
+  default_matryoshka_dim:
+    type: int
+    default: 64
+    description: "Default nested Matryoshka prefix slice dimension (16, 32, 64, or 128)."
+  enable_idle_exploration:
+    type: bool
+    default: true
+    description: "Run zero-token Successive Halving configuration exploration at session boundaries."

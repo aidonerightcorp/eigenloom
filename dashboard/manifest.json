@@ -1,0 +1,13 @@
+{
+  "name": "eigenloom",
+  "label": "EigenLoom",
+  "description": "Cybernetic 20-engine manifold, fluid 100D Matryoshka HyperGrid, and 7-target operator stack compiler.",
+  "icon": "Cpu",
+  "version": "1.0.0",
+  "entry": "bundle.js",
+  "api": "plugin_api.py",
+  "tab": {
+    "path": "/eigenloom",
+    "position": "end"
+  }
+}
